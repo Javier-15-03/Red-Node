@@ -15,10 +15,6 @@
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "",
@@ -26,10 +22,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 210,
-        "y": 160,
+        "payload": "Hola",
+        "payloadType": "str",
+        "x": 230,
+        "y": 220,
         "wires": [
             [
                 "dc64777f65f6d37e"
@@ -48,8 +44,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1060,
-        "y": 160,
+        "x": 920,
+        "y": 180,
         "wires": []
     }
 ]
