@@ -8,6 +8,99 @@
         "env": []
     },
     {
+        "id": "c4634993f19cd566",
+        "type": "mqtt-broker",
+        "name": "Hivemq@broker.emqx.io:1883",
+        "broker": "broker.emqx.io",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "19bf7b6c9767a391",
+        "type": "mqtt-broker",
+        "name": "Conexion mosquito",
+        "broker": "test.mosquitto.org",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b1582cb1c628daf4",
+        "type": "mqtt-broker",
+        "name": "prueba",
+        "broker": "test.mosquitto.org",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "08aff6799bca1602",
         "type": "inject",
         "z": "f7ab6e61d11e548e",
@@ -24,8 +117,8 @@
         "topic": "",
         "payload": "Hola",
         "payloadType": "str",
-        "x": 230,
-        "y": 220,
+        "x": 170,
+        "y": 860,
         "wires": [
             [
                 "dc64777f65f6d37e"
@@ -44,8 +137,172 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 920,
-        "y": 180,
+        "x": 600,
+        "y": 860,
         "wires": []
+    },
+    {
+        "id": "1838a330d3bcd073",
+        "type": "mqtt in",
+        "z": "f7ab6e61d11e548e",
+        "name": "",
+        "topic": "topic/numero1/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c4634993f19cd566",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "f2583a14e1b294fc"
+            ]
+        ]
+    },
+    {
+        "id": "f2583a14e1b294fc",
+        "type": "debug",
+        "z": "f7ab6e61d11e548e",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "bf50b9601b279a60",
+        "type": "mqtt in",
+        "z": "f7ab6e61d11e548e",
+        "name": "",
+        "topic": "mosquitto/prueba/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "19bf7b6c9767a391",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "f2583a14e1b294fc"
+            ]
+        ]
+    },
+    {
+        "id": "fa8a508b32cb0ab5",
+        "type": "mqtt out",
+        "z": "f7ab6e61d11e548e",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b1582cb1c628daf4",
+        "x": 1010,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f0b3e5b7e65b68fa",
+        "type": "inject",
+        "z": "f7ab6e61d11e548e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "mosquitto/prueba/javier",
+        "payload": "{\"tem\":\"45°\",\"hum\":\"23\",\"cal\":\"48°\",\"msg\":\"hola inject 2\"}",
+        "payloadType": "json",
+        "x": 530,
+        "y": 300,
+        "wires": [
+            [
+                "fa8a508b32cb0ab5"
+            ]
+        ]
+    },
+    {
+        "id": "23c568b4cc2bc6e3",
+        "type": "inject",
+        "z": "f7ab6e61d11e548e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "prueba/2/javier",
+        "payload": "{\"tem\":\"45°\",\"hum\":\"23\",\"cal\":\"48°\",\"msg\":\"hola prueba 2\"}",
+        "payloadType": "json",
+        "x": 530,
+        "y": 380,
+        "wires": [
+            [
+                "fa8a508b32cb0ab5"
+            ]
+        ]
+    },
+    {
+        "id": "75d0751ce59aa8c0",
+        "type": "inject",
+        "z": "f7ab6e61d11e548e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "prueba/3/prueba",
+        "payload": "{\"tem\":\"45°\",\"hum\":\"23\",\"cal\":\"48°\",\"msg\":\"hola 3\"}",
+        "payloadType": "json",
+        "x": 530,
+        "y": 440,
+        "wires": [
+            [
+                "fa8a508b32cb0ab5"
+            ]
+        ]
     }
 ]
