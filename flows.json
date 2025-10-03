@@ -8,6 +8,30 @@
         "env": []
     },
     {
+        "id": "e0ed5c38912c6dad",
+        "type": "tab",
+        "label": "Cliente",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "15e24bc64be06e6f",
+        "type": "tab",
+        "label": "Servidor",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e19461bb2acb9775",
+        "type": "tab",
+        "label": "API CLIMA",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "c4634993f19cd566",
         "type": "mqtt-broker",
         "name": "Hivemq@broker.emqx.io:1883",
@@ -101,6 +125,95 @@
         "sessionExpiry": ""
     },
     {
+        "id": "d1db9b8a8f0f3f4f",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "6543d2777545800d",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "a901c59fe4eb92c5",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "d1db9b8a8f0f3f4f",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "6543d2777545800d",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": true,
+        "disabled": "false"
+    },
+    {
+        "id": "25e18a99459a488e",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "a901c59fe4eb92c5",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": false,
+        "groupType": "default"
+    },
+    {
         "id": "08aff6799bca1602",
         "type": "inject",
         "z": "f7ab6e61d11e548e",
@@ -154,7 +267,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 400,
+        "x": 340,
         "y": 100,
         "wires": [
             [
@@ -175,8 +288,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 840,
-        "y": 100,
+        "x": 900,
+        "y": 140,
         "wires": []
     },
     {
@@ -304,5 +417,857 @@
                 "fa8a508b32cb0ab5"
             ]
         ]
+    },
+    {
+        "id": "8f10f6a816839977",
+        "type": "inject",
+        "z": "e0ed5c38912c6dad",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "af8ea26a922ce62e"
+            ]
+        ]
+    },
+    {
+        "id": "af8ea26a922ce62e",
+        "type": "http request",
+        "z": "e0ed5c38912c6dad",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://www.example.com",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "652403ea8d521433"
+            ]
+        ]
+    },
+    {
+        "id": "652403ea8d521433",
+        "type": "debug",
+        "z": "e0ed5c38912c6dad",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "ad0caf043f8cd3b6",
+        "type": "inject",
+        "z": "e0ed5c38912c6dad",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 230,
+        "y": 500,
+        "wires": [
+            [
+                "93613996f751c529"
+            ]
+        ]
+    },
+    {
+        "id": "93613996f751c529",
+        "type": "http request",
+        "z": "e0ed5c38912c6dad",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1:1880/sensores/23.8/89.7",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 530,
+        "y": 500,
+        "wires": [
+            [
+                "fc3d471af1ed1db1"
+            ]
+        ]
+    },
+    {
+        "id": "fc3d471af1ed1db1",
+        "type": "debug",
+        "z": "e0ed5c38912c6dad",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "2e279e193884bcc1",
+        "type": "http in",
+        "z": "15e24bc64be06e6f",
+        "name": "",
+        "url": "/sensores/:temp/:hum",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "8825e5eea747c674",
+                "ded643bb5de73027"
+            ]
+        ]
+    },
+    {
+        "id": "8825e5eea747c674",
+        "type": "debug",
+        "z": "15e24bc64be06e6f",
+        "name": "Server REST",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "f5ae6a3c4d13b113",
+        "type": "http response",
+        "z": "15e24bc64be06e6f",
+        "name": "OK",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ded643bb5de73027",
+        "type": "template",
+        "z": "15e24bc64be06e6f",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n<body>\n\n<h1>Server REST</h1>\n\n<p>Solo estamos recibiendo parametros de temp y hum</p>\n\n</body>\n</html>",
+        "output": "str",
+        "x": 400,
+        "y": 160,
+        "wires": [
+            [
+                "f5ae6a3c4d13b113"
+            ]
+        ]
+    },
+    {
+        "id": "96d0c3131f1cc72f",
+        "type": "debug",
+        "z": "e19461bb2acb9775",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "926f593f31540e3a",
+        "type": "openweathermap",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Machala",
+        "country": "Ecuador",
+        "language": "en",
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "96d0c3131f1cc72f"
+            ]
+        ]
+    },
+    {
+        "id": "85eff1742031ff79",
+        "type": "inject",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 180,
+        "wires": [
+            [
+                "926f593f31540e3a"
+            ]
+        ]
+    },
+    {
+        "id": "169b486184ae89a5",
+        "type": "openweathermap in",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Machala",
+        "country": "Ecuador",
+        "language": "en",
+        "x": 480,
+        "y": 80,
+        "wires": [
+            [
+                "d0a0af095a9e7228"
+            ]
+        ]
+    },
+    {
+        "id": "d0a0af095a9e7228",
+        "type": "debug",
+        "z": "e19461bb2acb9775",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "dbf495f18c35c443",
+        "type": "inject",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "80589e7a8fe624f4"
+            ]
+        ]
+    },
+    {
+        "id": "80589e7a8fe624f4",
+        "type": "change",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "id",
+                "pt": "msg",
+                "to": "3654533",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "APPID",
+                "pt": "msg",
+                "to": "6a405864c6811d55e32c6af909ad641f",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 260,
+        "wires": [
+            [
+                "161e3c576daf6c73"
+            ]
+        ]
+    },
+    {
+        "id": "161e3c576daf6c73",
+        "type": "http request",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://api.openweathermap.org/data/2.5/forecast?id={{{id}}}&APPID={{{APPID}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 710,
+        "y": 260,
+        "wires": [
+            [
+                "71a0f893fd6c5690"
+            ]
+        ]
+    },
+    {
+        "id": "72e5d080ffa1c228",
+        "type": "debug",
+        "z": "e19461bb2acb9775",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "71a0f893fd6c5690",
+        "type": "json",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 870,
+        "y": 260,
+        "wires": [
+            [
+                "72e5d080ffa1c228"
+            ]
+        ]
+    },
+    {
+        "id": "6134ef4f82e2ac49",
+        "type": "inject",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 380,
+        "wires": [
+            [
+                "fed302f4a998f3d2"
+            ]
+        ]
+    },
+    {
+        "id": "fed302f4a998f3d2",
+        "type": "http request",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://api.weatherstack.com/current?access_key=4a1ff7c0cefc04d9dcb48d06ed02860c&query=Machala",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 410,
+        "y": 380,
+        "wires": [
+            [
+                "80cd8f3cb9f03aa3"
+            ]
+        ]
+    },
+    {
+        "id": "38354ec656da136d",
+        "type": "debug",
+        "z": "e19461bb2acb9775",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "80cd8f3cb9f03aa3",
+        "type": "json",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 610,
+        "y": 380,
+        "wires": [
+            [
+                "38354ec656da136d"
+            ]
+        ]
+    },
+    {
+        "id": "56ae4cb90f3e7114",
+        "type": "ui-gauge",
+        "z": "e19461bb2acb9775",
+        "name": "Temperatura",
+        "group": "25e18a99459a488e",
+        "order": 3,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperatura",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1010,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "416f2eeaea252830",
+        "type": "ui-gauge",
+        "z": "e19461bb2acb9775",
+        "name": "Humedad",
+        "group": "25e18a99459a488e",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Humedad",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1000,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "020a0f1cf3e355dd",
+        "type": "change",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.current.temperature",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 580,
+        "wires": [
+            [
+                "56ae4cb90f3e7114"
+            ]
+        ]
+    },
+    {
+        "id": "b6e08b11d54e3b2f",
+        "type": "inject",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 600,
+        "wires": [
+            [
+                "897f6e201a72b274"
+            ]
+        ]
+    },
+    {
+        "id": "897f6e201a72b274",
+        "type": "http request",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://api.weatherstack.com/current?access_key=4a1ff7c0cefc04d9dcb48d06ed02860c&query=Machala",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 350,
+        "y": 600,
+        "wires": [
+            [
+                "c69a7d088b586290"
+            ]
+        ]
+    },
+    {
+        "id": "c69a7d088b586290",
+        "type": "json",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 510,
+        "y": 600,
+        "wires": [
+            [
+                "020a0f1cf3e355dd",
+                "8d807d730ee06a8c",
+                "17b7167ab234071c",
+                "d9b3215b1cf2e245"
+            ]
+        ]
+    },
+    {
+        "id": "8d807d730ee06a8c",
+        "type": "change",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.current.humidity",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 640,
+        "wires": [
+            [
+                "416f2eeaea252830"
+            ]
+        ]
+    },
+    {
+        "id": "3b3232056774e9f4",
+        "type": "ui-text",
+        "z": "e19461bb2acb9775",
+        "group": "25e18a99459a488e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Direccion del Viento",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1060,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "17b7167ab234071c",
+        "type": "change",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.current.wind_dir",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 700,
+        "wires": [
+            [
+                "3b3232056774e9f4"
+            ]
+        ]
+    },
+    {
+        "id": "d9b3215b1cf2e245",
+        "type": "change",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.is_day",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 760,
+        "wires": [
+            [
+                "d538fb9a6e19a110"
+            ]
+        ]
+    },
+    {
+        "id": "d538fb9a6e19a110",
+        "type": "ui-led",
+        "z": "e19461bb2acb9775",
+        "name": "",
+        "group": "",
+        "order": -1,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "states": [
+            {
+                "value": "false",
+                "valueType": "bool",
+                "color": "#ff0000"
+            },
+            {
+                "value": "true",
+                "valueType": "bool",
+                "color": "#00ff00"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showBorder": true,
+        "showGlow": true,
+        "x": 970,
+        "y": 760,
+        "wires": []
     }
 ]
